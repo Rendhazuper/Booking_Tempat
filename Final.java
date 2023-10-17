@@ -2,18 +2,19 @@ import java.util.*;
 public class Final {
     
    public static void main(String[] args) {
-        String username, password;
+        String username = "", password = "";
         boolean session = false;
         Scanner key = new Scanner(System.in);
 
         
-    
+        while (!session) {
+            // String username, password;
         System.out.println("harap login");
         System.out.print("masukkan username : ");
         username = key.nextLine();
         System.out.print("masukkan password : ");
         password = key.nextLine();
-    while (!session) {
+    
         if (username.equalsIgnoreCase("admin") && password.equals("admin")) {
             session = true;
 
@@ -30,7 +31,7 @@ public class Final {
         int pilih_menu;
         pilih_menu = key.nextInt();
         switch (pilih_menu) {
-            case 1:
+            case 1: 
             String nama_pemesan,sedia, jenis_inap, nama_tipe;
             int hari, jam, pilih_tipe , nomor_kamar, tipe_kamar, harga_kamar, total_bayar, jml_pesan, bayar;
             System.out.print("Masukkan nama pemesan : ");
