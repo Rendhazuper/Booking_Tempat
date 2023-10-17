@@ -71,6 +71,7 @@ public class Final {
                     System.out.println("=============Detail Pesanan===========");
                     System.out.println("nama pemesan : "+nama_pemesan);
                     System.out.println("nomor kamar " + nomor_kamar);
+                    System.out.println("tipe kamar : "+ nama_tipe);
                     System.out.println("lama menginap "+hari+ " hari");
                     System.out.println("taghinan Rp "+total_bayar);
                     System.out.println("bayar Rp "+bayar);
@@ -81,6 +82,7 @@ public class Final {
                     System.out.println("=============Detail Pesanan===========");
                     System.out.println("nama pemesan : "+nama_pemesan);
                     System.out.println("nomor kamar " + nomor_kamar);
+                    System.out.println("tipe kamar : "+ nama_tipe);
                     System.out.println("lama menginap "+hari+ " hari");
                     System.out.println("taghinan Rp "+total_bayar);
                     System.out.println("bayar Rp "+bayar);
@@ -101,6 +103,7 @@ public class Final {
                     System.out.println("=============Detail Pesanan===========");
                     System.out.println("nama pemesan : "+nama_pemesan);
                     System.out.println("nomor kamar " + nomor_kamar);
+                    System.out.println("tipe kamar : "+ nama_tipe);
                     System.out.println("lama menginap "+jam+ " hari");
                     System.out.println("taghinan Rp "+total_bayar);
                     System.out.println("bayar Rp "+bayar);
@@ -111,6 +114,7 @@ public class Final {
                     System.out.println("=============Detail Pesanan===========");
                     System.out.println("nama pemesan : "+nama_pemesan);
                     System.out.println("nomor kamar " + nomor_kamar);
+                    System.out.println("tipe kamar : "+ nama_tipe);
                     System.out.println("lama menginap "+jam+ " hari");
                     System.out.println("taghinan Rp "+total_bayar);
                     System.out.println("bayar Rp "+bayar);
@@ -129,7 +133,91 @@ public class Final {
 
                     break;
             
-                default:
+                case 2:
+                 nama_tipe = "Deluxe";//input nilai nama tipe kamar untuk dipanggil pada struk
+                
+                //input nilai
+                System.out.print("masukkan ketersediaan kamar (tersedia / tidak): ");
+                sedia = key.nextLine();
+                if (sedia.equalsIgnoreCase("Tersedia")) {
+                System.out.print("masukkan harga kamar : ");
+                harga_kamar = key.nextInt();
+                key.nextLine();
+                System.out.print("masukkan jenis inap (hari/jam): ");          
+                jenis_inap = key.nextLine();
+                    if (jenis_inap.equalsIgnoreCase("hari")) {
+                    System.out.print("masukkan durasi : ");
+                    hari = key.nextInt();
+                    total_bayar = harga_kamar * hari;
+                    System.out.println("total harus dibayar : "+ total_bayar);
+                    System.out.print("Masukkan pembayaran : ");
+                    bayar = key.nextInt();
+                    if (bayar > total_bayar) {
+                   int kembalian = bayar - total_bayar;
+                    System.out.println("Pembayaran berhasil");
+                    System.out.println("=============Detail Pesanan===========");
+                    System.out.println("nama pemesan : "+nama_pemesan);
+                    System.out.println("nomor kamar " + nomor_kamar);
+                    System.out.println("tipe kamar : "+ nama_tipe);
+                    System.out.println("lama menginap "+hari+ " hari");
+                    System.out.println("taghinan Rp "+total_bayar);
+                    System.out.println("bayar Rp "+bayar);
+                    System.out.println("kembalian Rp "+kembalian);
+                    System.out.println("=========================================");
+                    } else if (total_bayar == bayar) {
+                         System.out.println("Pembayaran berhasil");
+                    System.out.println("=============Detail Pesanan===========");
+                    System.out.println("nama pemesan : "+nama_pemesan);
+                    System.out.println("nomor kamar " + nomor_kamar);
+                    System.out.println("tipe kamar : "+ nama_tipe);
+                    System.out.println("lama menginap "+hari+ " hari");
+                    System.out.println("taghinan Rp "+total_bayar);
+                    System.out.println("bayar Rp "+bayar);
+                    System.out.println("=========================================");
+                    }else{
+                        System.out.println("Pembayaran tidak berhasil");
+                    }   
+                }else if (jenis_inap.equalsIgnoreCase("jam")){
+                    System.out.print("Masukkan durasi : ");
+                    jam = key.nextInt();
+                    total_bayar = harga_kamar * jam;
+                     System.out.println("total harus dibayar : "+ total_bayar);
+                    System.out.print("Masukkan pembayaran : ");
+                    bayar = key.nextInt();
+                    if (bayar > total_bayar) {
+                   int kembalian = bayar - total_bayar;
+                    System.out.println("Pembayaran berhasil");
+                    System.out.println("=============Detail Pesanan===========");
+                    System.out.println("nama pemesan : "+nama_pemesan);
+                    System.out.println("nomor kamar " + nomor_kamar);
+                    System.out.println("tipe kamar : "+ nama_tipe);
+                    System.out.println("lama menginap "+jam+ " hari");
+                    System.out.println("taghinan Rp "+total_bayar);
+                    System.out.println("bayar Rp "+bayar);
+                    System.out.println("kembalian Rp "+kembalian);
+                    System.out.println("=========================================");
+                    } else if (total_bayar == bayar) {
+                         System.out.println("Pembayaran berhasil");
+                    System.out.println("=============Detail Pesanan===========");
+                    System.out.println("nama pemesan : "+nama_pemesan);
+                    System.out.println("nomor kamar " + nomor_kamar);
+                    System.out.println("tipe kamar : "+ nama_tipe);
+                    System.out.println("lama menginap "+jam+ " hari");
+                    System.out.println("taghinan Rp "+total_bayar);
+                    System.out.println("bayar Rp "+bayar);
+                    System.out.println("=========================================");
+                    }else{
+                        System.out.println("Pembayaran tidak berhasil");
+                    }  
+                        }else{
+                        System.out.println("input tidak valid");
+                        break;
+                        }
+
+                    }else if (sedia.equalsIgnoreCase("tidak")){
+                   
+                }
+
                     break;
             }
             
