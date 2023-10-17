@@ -7,7 +7,8 @@ public class Final {
         Scanner key = new Scanner(System.in);
 
         
-        while (!session) {
+        do{
+            
             // String username, password;
         System.out.println("harap login");
         System.out.print("masukkan username : ");
@@ -20,9 +21,12 @@ public class Final {
 
     }else{
         System.out.println("username atau password salah");
-        break;
+        session =false;
+
     }
-}
+    
+}while (!session);
+        
     while (session) {
         System.out.println("selamat datang "+ username + " ingin melakukan input pesanan ?");
         System.out.println("1. iya");
