@@ -2,6 +2,8 @@ import java.util.*;
 public class Final {
     
    public static void main(String[] args) {
+    String menuawal [] = {"1.iya", "2.tidak"} ;
+    String menutipe [] = {"1.standar", "2.deluxe"} ;
         String username = "", password = "";
         boolean session = false;
         Scanner key = new Scanner(System.in);
@@ -22,31 +24,33 @@ public class Final {
     }else{
         System.out.println("username atau password salah");
         session =false;
-
+        
     }
     
 }while (!session);
         
     while (session) {
         System.out.println("selamat datang "+ username + " ingin melakukan input pesanan ?");
-        System.out.println("1. iya");
-        System.out.println("2. tidak");
+        for (int i = 0; i < menuawal.length; i++) {
+            System.out.println(menuawal[i]);
+        }
         System.out.print("pilih menu : ");
         int pilih_menu;
         pilih_menu = key.nextInt();
         switch (pilih_menu) {
             case 1: 
             String nama_pemesan,sedia, jenis_inap, nama_tipe;
-            int hari, jam, pilih_tipe , nomor_kamar, tipe_kamar, harga_kamar, total_bayar, jml_pesan, bayar;
+            int hari, jam, pilih_tipe , nomor_kamar, harga_kamar, total_bayar, jml_pesan, bayar;
             System.out.print("Masukkan nama pemesan : ");
             nama_pemesan= key.nextLine();
             key.nextLine();
             System.out.print("Masukkan nomor kamar : ");
             nomor_kamar = key.nextInt();
             key.nextLine();
-            System.out.println("tipe kamar : ");
-            System.out.println("1. Standart");
-            System.out.println("2. Deluxe");
+            System.out.println("tipe kamar (1/2): ");
+           for (int i = 0; i < menutipe.length; i++) {
+             System.out.println(menutipe[i]);
+           }
             System.out.print("pilih tipe kamar : ");
             pilih_tipe = key.nextInt();
             key.nextLine();
