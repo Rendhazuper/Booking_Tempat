@@ -28,7 +28,7 @@ public class Final {
     }
     
 }while (!session);
-boolean[][] kamarTersedia = new boolean[10][31];
+        
     while (session) {
         System.out.println("selamat datang "+ username + " ingin melakukan input pesanan ?");
         for (int i = 0; i < menuawal.length; i++) {
@@ -40,50 +40,28 @@ boolean[][] kamarTersedia = new boolean[10][31];
         switch (pilih_menu) {
             case 1: 
             String nama_pemesan,sedia, jenis_inap, nama_tipe;
-            int hari, jam, pilih_tipe , nomor_kamar, harga_kamar, total_bayar, jml_pesan, bayar,tanggal;
-            System.out.print("Masukkan nomor kamar: ");
+            int hari, jam, pilih_tipe , nomor_kamar, harga_kamar, total_bayar, jml_pesan, bayar;
+            System.out.print("Masukkan nama pemesan : ");
+            nama_pemesan= key.nextLine();
+            key.nextLine();
+            System.out.print("Masukkan nomor kamar : ");
             nomor_kamar = key.nextInt();
             key.nextLine();
-            
-            // Validasi nomor kamar
-            if (nomor_kamar < 1 || nomor_kamar > 10) {
-                System.out.println("Nomor kamar tidak valid. Harus antara 1 dan 10.");
-                break;
-            }
-            
-            System.out.print("Masukkan tanggal (1-31): ");
-            tanggal = key.nextInt();
-            key.nextLine();
-            
-            // Validasi tanggal
-            if (tanggal < 1 || tanggal > 31) {
-                System.out.println("Tanggal tidak valid. Harus antara 1 dan 31.");
-                break;
-            }
-            
-            System.out.print("Masukkan ketersediaan kamar (tersedia / tidak): ");
-            String ketersediaan = key.nextLine();
-            
-            // Mengubah ketersediaan kamar ke nilai boolean
-            boolean tersedia = ketersediaan.equalsIgnoreCase("tersedia");
-            
-            // Menyimpan ketersediaan kamar dalam array 2D
-            kamarTersedia[nomor_kamar - 1][tanggal - 1] = tersedia;
-
-            System.out.println("Ketersediaan kamar untuk Nomor Kamar " + nomor_kamar + " pada Tanggal " + tanggal + " adalah: " + ketersediaan);
-
-
-            System.out.println("tipe kamar");
-            System.out.println("1. standart");
-            System.out.println("2. deluxe");
-            System.out.print("pilih tipe kamar :");
+            System.out.println("tipe kamar (1/2): ");
+           for (int i = 0; i < menutipe.length; i++) {
+             System.out.println(menutipe[i]);
+           }
+            System.out.print("pilih tipe kamar : ");
             pilih_tipe = key.nextInt();
-
+            key.nextLine();
             switch (pilih_tipe) {
                 case 1:
                 nama_tipe = "Standart";//input nilai nama tipe kamar untuk dipanggil pada struk
                 
                 //input nilai
+                System.out.print("masukkan ketersediaan kamar (tersedia / tidak): ");
+                sedia = key.nextLine();
+                if (sedia.equalsIgnoreCase("Tersedia")) {
                 System.out.print("masukkan harga kamar : ");
                 harga_kamar = key.nextInt();
                 key.nextLine();
@@ -258,6 +236,8 @@ boolean[][] kamarTersedia = new boolean[10][31];
             System.out.println("Anda telah keluar dari aplikasi");
             session = false;
                 break;
+            case 3:
+            
         }
     }
 
