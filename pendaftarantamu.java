@@ -1,11 +1,11 @@
  import java.util.Scanner;
  public class pendaftarantamu {
-    private static final int MAX_TAMU = 100; // Maksimum jumlah tamu yang dapat diakomodasi
+    int MAX_TAMU = 100; // Maksimum jumlah tamu yang dapat diakomodasi
 
-    private String[] namaTamu = new String[MAX_TAMU];
-    private int[] umurTamu = new int[MAX_TAMU];
-    private int[] nomorKamar = new int[MAX_TAMU];
-    private int jumlahTamu = 0;
+    String[] namaTamu = new String[MAX_TAMU];
+    int[] umurTamu = new int[MAX_TAMU];
+    int[] nomorKamar = new int[MAX_TAMU];
+    int jumlahTamu = 0;
 
     public static void main(String[] args) {
         pendaftarantamu hotel = new pendaftarantamu();
