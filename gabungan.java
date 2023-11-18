@@ -40,10 +40,63 @@ while (sesi) {
 
         switch (pilih_menu) {
             case 1:
-            System.out.println("tes 1");
-                
-                break;
-        
+          
+             Scanner scanner = new Scanner(System.in);
+
+        // Harga kamar per hari atau per jam
+        int hargaKamar = 100; // Ganti dengan harga kamar yang sesuai
+
+        // Input nama tamu
+        System.out.print("Masukkan nama tamu: ");
+        String namaTamu = scanner.next();
+
+        // Input nomor kamar yang dipesan
+        System.out.print("Masukkan nomor kamar: ");
+        int nomorKamar = scanner.nextInt();
+
+        // Tampilkan pilihan menginap hari atau jam
+        System.out.println("Pilihan menginap:");
+        System.out.println("1. Menginap Hari");
+        System.out.println("2. Menginap Jam");
+        System.out.print("Pilih opsi (1/2): ");
+        int pilihan = scanner.nextInt();
+
+        int jumlah = 0;
+        double totalHarga = 0;
+
+        if (pilihan == 1) {
+            // Pilihan pertama (hari)
+            System.out.print("Masukkan jumlah hari: ");
+            jumlah = scanner.nextInt();
+            totalHarga = hargaKamar * jumlah;
+        } else if (pilihan == 2) {
+            // Pilihan kedua (jam)
+            System.out.print("Masukkan jumlah jam: ");
+            jumlah = scanner.nextInt();
+            totalHarga = hargaKamar * jumlah / 24; // asumsi 1 hari = 24 jam
+        }
+
+        // Input pembayaran
+        System.out.print("Masukkan jumlah pembayaran: ");
+        double pembayaran = scanner.nextDouble();
+
+        // Proses pembayaran dan kembalian
+        if (pembayaran > totalHarga) {
+            double kembalian = pembayaran - totalHarga;
+            System.out.println("Kembalian: " + kembalian);
+        } else if (pembayaran < totalHarga) {
+            System.out.println("Pembayaran kurang. Transaksi dibatalkan.");
+        } else {
+            // Tampilkan informasi booking
+            System.out.println("Nama Tamu: " + namaTamu);
+            System.out.println("Nomor Kamar: " + nomorKamar);
+            System.out.println("Tanggal Booking: " + java.time.LocalDate.now());
+            System.out.println("Total Harga: " + totalHarga);
+            System.out.println("Status: Lunas");
+        }
+    }
+}
+             break;
             case 2:
             System.out.println("tes 2");
                 break;
@@ -52,18 +105,15 @@ while (sesi) {
             System.out.println("tes 3");
 
             break;
-
-            default : 
-            System.out.println("Pilih nomor yg ad!");
-            continue;
-            
+            case 4:
+           
+                default:
+                    System.out.println("Pilihan tidak valid. Silakan pilih lagi.");
+            }
         }
-        
-        break;
-  
-}
-}
-}
+
+
+
  
 
 
