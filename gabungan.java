@@ -53,9 +53,7 @@ while (sesi) {
 
             break;
 
-            default : 
-            System.out.println("Pilih nomor yg ad!");
-            continue;
+         
             
         }
         
