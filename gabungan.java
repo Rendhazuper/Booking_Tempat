@@ -84,8 +84,19 @@ while (sesi) {
         if (pembayaran > totalHarga) {
             double kembalian = pembayaran - totalHarga;
             System.out.println("Kembalian: " + kembalian);
+             System.out.println("Nama Tamu: " + namaTamu);
+            System.out.println("Nomor Kamar: " + nomorKamar);
+            System.out.println("Tanggal Booking: " + java.time.LocalDate.now());
+            System.out.println("Total Harga: " + totalHarga);
+            System.out.println("Status: Lunas");
+            
         } else if (pembayaran < totalHarga) {
             System.out.println("Pembayaran kurang. Transaksi dibatalkan.");
+             System.out.println("Nama Tamu: " + namaTamu);
+            System.out.println("Nomor Kamar: " + nomorKamar);
+            System.out.println("Tanggal Booking: " + java.time.LocalDate.now());
+            System.out.println("Total Harga: " + totalHarga);
+            System.out.println("Status: Lunas");
         } else {
             // Tampilkan informasi booking
             System.out.println("Nama Tamu: " + namaTamu);
