@@ -40,8 +40,7 @@ while (sesi) {
 
         switch (pilih_menu) {
             case 1:
-          
-             Scanner scanner = new Scanner(System.in);
+            Scanner scanner = new Scanner(System.in);
 
         // Harga kamar per hari atau per jam
         int hargaKamar = 100; // Ganti dengan harga kamar yang sesuai
@@ -67,12 +66,12 @@ while (sesi) {
         if (pilihan == 1) {
             // Pilihan pertama (hari)
             System.out.print("Masukkan jumlah hari: ");
-            jumlah = scanner.nextInt();
+            jumlah = key.nextInt();
             totalHarga = hargaKamar * jumlah;
         } else if (pilihan == 2) {
             // Pilihan kedua (jam)
             System.out.print("Masukkan jumlah jam: ");
-            jumlah = scanner.nextInt();
+            jumlah = key.nextInt();
             totalHarga = hargaKamar * jumlah / 24; // asumsi 1 hari = 24 jam
         }
 
@@ -107,16 +106,52 @@ while (sesi) {
         }
     
              break;
-            case 2:
-            System.out.println("tes 2");
-                break;
+            case 2:   
+        // 1. Inisialisasi data
+        int[][] informasiKamar = new int[10][2]; // Misalnya, 10 kamar dengan nomor kamar dan status ketersediaan
+        // Inisialisasi ketersediaan kamar (0: tersedia, 1: tidak tersedia)
+        for (int i = 0; i < informasiKamar.length; i++) {
+            informasiKamar[i][0] = i + 1; // Nomor kamar
+            informasiKamar[i][1] = 0;    // Ketersediaan diatur menjadi tersedia awalnya
+        }
 
+        // 2. Input data
+        int[][] inputKamar = new int[10][2]; // Array untuk menyimpan data input
+        for (int i = 0; i < inputKamar.length; i++) {
+            System.out.println("Masukkan informasi kamar ke-" + (i + 1));
+            System.out.print("Nomor Kamar: ");
+            inputKamar[i][0] = key.nextInt();
+
+            System.out.print("Ketersediaan (0: Tersedia, 1: Tidak Tersedia): ");
+            inputKamar[i][1] = key.nextInt();
+
+            // Mengupdate status kamar di informasiKamar
+            for (int j = 0; j < informasiKamar.length; j++) {
+                if (informasiKamar[j][0] == inputKamar[i][0]) {
+                    informasiKamar[j][1] = inputKamar[i][1];
+                    break;
+                }
+            }
+        }
+
+        // 3. Tampilkan array
+        System.out.println("\nInformasi Kamar:");
+        System.out.println("Nomor Kamar\tKetersediaan");
+        for (int i = 0; i < informasiKamar.length; i++) {
+            System.out.println(informasiKamar[i][0] + "\t\t\t" + informasiKamar[i][1]);
+        }
+     
+                break;
+           
             case 3:
             System.out.println("tes 3");
             break;
-    }   }
+    }
 }
 }
+}
+
+
         
     
     
