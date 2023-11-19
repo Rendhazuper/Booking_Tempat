@@ -94,8 +94,7 @@ while (sesi) {
             System.out.println("Total Harga: " + totalHarga);
             System.out.println("Status: Lunas");
         }
-    }
-}
+    
              break;
             case 2:
             System.out.println("tes 2");
@@ -103,14 +102,19 @@ while (sesi) {
 
             case 3:
             System.out.println("tes 3");
-
             break;
-            case 4:
-           
-                default:
-                    System.out.println("Pilihan tidak valid. Silakan pilih lagi.");
-            }
-        }
+    }   }
+}
+}
+        
+    
+    
+
+
+
+         
+ 
+        
 
 
 
