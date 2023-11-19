@@ -40,25 +40,25 @@ while (sesi) {
 
         switch (pilih_menu) {
             case 1:
-            Scanner scanner = new Scanner(System.in);
+
 
         // Harga kamar per hari atau per jam
         int hargaKamar = 100; // Ganti dengan harga kamar yang sesuai
 
         // Input nama tamu
         System.out.print("Masukkan nama tamu: ");
-        String namaTamu = scanner.next();
+        String namaTamu = key.next();
 
         // Input nomor kamar yang dipesan
         System.out.print("Masukkan nomor kamar: ");
-        int nomorKamar = scanner.nextInt();
+        int nomorKamar = key.nextInt();
 
         // Tampilkan pilihan menginap hari atau jam
         System.out.println("Pilihan menginap:");
         System.out.println("1. Menginap Hari");
         System.out.println("2. Menginap Jam");
         System.out.print("Pilih opsi (1/2): ");
-        int pilihan = scanner.nextInt();
+        int pilihan = key.nextInt();
 
         int jumlah = 0;
         double totalHarga = 0;
@@ -77,7 +77,7 @@ while (sesi) {
 
         // Input pembayaran
         System.out.print("Masukkan jumlah pembayaran: ");
-        double pembayaran = scanner.nextDouble();
+        double pembayaran = key.nextDouble();
 
         // Proses pembayaran dan kembalian
         if (pembayaran > totalHarga) {
