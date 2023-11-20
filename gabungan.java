@@ -159,7 +159,7 @@ while (sesi) {
             String [] checkin = {"11-12-2023","12-12-2023","15-12-2023"};
             String [] checkout = {"11-12-2023","12-12-2023","15-12-2023"};
             int [] nomor_kamar = {1,2,3};
-            int pembayaran;
+
 
             System.out.println("===RIWAYAT TAMU===");
             for (int i = 0; i < nama.length; i++) { 
