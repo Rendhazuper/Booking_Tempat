@@ -40,18 +40,17 @@ while (sesi) {
 
         switch (pilih_menu) {
             case 1:
-
-
         // Harga kamar per hari atau per jam
-        int hargaKamar = 100; // Ganti dengan harga kamar yang sesuai
+        int hargaHari= 5000, hargaJam = 2000, nomorKamar,jumlah;
+        double totalHarga; 
+        String namaTamu;
 
         // Input nama tamu
         System.out.print("Masukkan nama tamu: ");
-        String namaTamu = key.next();
-
+        namaTamu = key.next();
         // Input nomor kamar yang dipesan
         System.out.print("Masukkan nomor kamar: ");
-        int nomorKamar = key.nextInt();
+        nomorKamar = key.nextInt();
 
         // Tampilkan pilihan menginap hari atau jam
         System.out.println("Pilihan menginap:");
@@ -60,48 +59,58 @@ while (sesi) {
         System.out.print("Pilih opsi (1/2): ");
         int pilihan = key.nextInt();
 
-        int jumlah = 0;
-        double totalHarga = 0;
+        jumlah = 0;
+        totalHarga = 0;
 
         if (pilihan == 1) {
             // Pilihan pertama (hari)
             System.out.print("Masukkan jumlah hari: ");
             jumlah = key.nextInt();
-            totalHarga = hargaKamar * jumlah;
+            totalHarga = hargaHari * jumlah;
         } else if (pilihan == 2) {
             // Pilihan kedua (jam)
             System.out.print("Masukkan jumlah jam: ");
             jumlah = key.nextInt();
-            totalHarga = hargaKamar * jumlah / 24; // asumsi 1 hari = 24 jam
+            totalHarga = hargaJam * jumlah;
         }
-
         // Input pembayaran
+        System.out.println("===============================");
+        System.out.printf("%d\t", totalHarga );
+        System.out.println("===============================");
+        System.out.println("lanjutkan pembayaran ?");
+        System.out.println("1 Ya");
+        System.out.println("2 Tidak");
         System.out.print("Masukkan jumlah pembayaran: ");
         double pembayaran = key.nextDouble();
+
+        System.out.print("Input tanggal masuk (hh-bb-yy)");
+        String tanggal = key.nextLine();
 
         // Proses pembayaran dan kembalian
         if (pembayaran > totalHarga) {
             double kembalian = pembayaran - totalHarga;
-            System.out.println("Kembalian: " + kembalian);
-             System.out.println("Nama Tamu: " + namaTamu);
+            System.out.println("Nama Tamu: " + namaTamu);
             System.out.println("Nomor Kamar: " + nomorKamar);
-            System.out.println("Tanggal Booking: " + java.time.LocalDate.now());
+            System.out.println("Tanggal Booking: " + tanggal);
             System.out.println("Total Harga: " + totalHarga);
+            System.out.println("Pembayaran : "+ pembayaran);
+            System.out.println("Kembalian: " + kembalian);
             System.out.println("Status: Lunas");
             
         } else if (pembayaran < totalHarga) {
             System.out.println("Pembayaran kurang. Transaksi dibatalkan.");
              System.out.println("Nama Tamu: " + namaTamu);
             System.out.println("Nomor Kamar: " + nomorKamar);
-            System.out.println("Tanggal Booking: " + java.time.LocalDate.now());
+            System.out.println("Tanggal Booking: " + tanggal);
             System.out.println("Total Harga: " + totalHarga);
-            System.out.println("Status: Lunas");
+            System.out.println("Status: Dibatalkan");
         } else {
             // Tampilkan informasi booking
             System.out.println("Nama Tamu: " + namaTamu);
             System.out.println("Nomor Kamar: " + nomorKamar);
-            System.out.println("Tanggal Booking: " + java.time.LocalDate.now());
+            System.out.println("Tanggal Booking: " + tanggal);
             System.out.println("Total Harga: " + totalHarga);
+            System.out.println("Pembayaran : "+ pembayaran);
             System.out.println("Status: Lunas");
         }
     
