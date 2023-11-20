@@ -66,12 +66,9 @@ while (sesi) {
             int pembayaran;
 
             System.out.println("===RIWAYAT TAMU===");
-            for (int i = 0; i < MAX_TAMU; i++) { 
-                System.out.print(i+1 + " ");
-                    riwayatTamu[i]= nama;
-                    riwayatTamu[i]= checkin;
-                    riwayatTamu[i]= checkout;
-                    riwayatTamu[i]= nomor_kamar;
+            for (int i = 0; i < nama.length; i++) { 
+                System.out.printf("%-3d| %-10s| %-20s| %-20s| %-3d | \n", (i+1), nama[i], checkin[i], checkout[i], nomor_kamar[i]);
+                    
 
             }
         
