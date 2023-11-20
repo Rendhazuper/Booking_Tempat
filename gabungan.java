@@ -1,7 +1,5 @@
 import java.util.*;
 public class gabungan {
-
-
 public static void main(String[] args) {
 //login terlebih dahulu
 Scanner key = new Scanner(System.in);
@@ -10,7 +8,7 @@ boolean sesi = false;
 int kesempatan = 3;
 
 while (!sesi && kesempatan > 0) {
-    
+
     System.out.println("Login");
     System.out.print("Masukkan username : ");
     username = key.nextLine();
@@ -23,7 +21,6 @@ while (!sesi && kesempatan > 0) {
         kesempatan--; 
         System.out.println("Username atau Password salah");
         System.out.println("Kesempatan : "+kesempatan);
-        
     }
 
 }
@@ -155,6 +152,23 @@ while (sesi) {
             case 3:
             System.out.println("tes 3");
             break;
+            case 4:
+            int MAX_TAMU = 100;
+            String[][] riwayatTamu = new String[MAX_TAMU][4];
+            String [] nama = {"ren" , "ron", "rin"}; 
+            String [] checkin = {"11-12-2023","12-12-2023","15-12-2023"};
+            String [] checkout = {"11-12-2023","12-12-2023","15-12-2023"};
+            int [] nomor_kamar = {1,2,3};
+            int pembayaran;
+
+            System.out.println("===RIWAYAT TAMU===");
+            for (int i = 0; i < nama.length; i++) { 
+                System.out.printf("%-3d| %-10s| %-20s| %-20s| %-3d | \n", (i+1), nama[i], checkin[i], checkout[i], nomor_kamar[i]);
+                    
+
+            }
+        
+                break;
     }
 }
 }
