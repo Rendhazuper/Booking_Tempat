@@ -3,7 +3,7 @@ public class gabungan {
     static Scanner key = new Scanner(System.in);
 
     public static void menu(int pilih_menu) {
-        switch (pilih_menu) {
+              switch (pilih_menu) {
             case 1:
         // Harga kamar per hari atau per jam
         int hargaHari= 5000, hargaJam = 2000, nomorKamar,jumlah;
@@ -138,9 +138,11 @@ public class gabungan {
         
                 break;
     }
-    }
+}
+}
+}
+
 public static void main(String[] args) {
-//login terlebih dahulu
 
 String username, password;
 boolean sesi = false;
@@ -174,7 +176,12 @@ while (sesi) {
         System.out.print("Pilih menu : ");
         pilih_menu = key.nextInt();
         menu(pilih_menu);
+}
+}
+}
 
-}
-}
-}
+
+        
+    
+    
+
