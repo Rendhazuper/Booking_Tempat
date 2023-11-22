@@ -1,96 +1,81 @@
 import java.util.*;
 public class gabungan {
+    static Scanner key = new Scanner(System.in);
 
-
-public static void main(String[] args) {
-//login terlebih dahulu
-Scanner key = new Scanner(System.in);
-String username, password;
-boolean sesi = false;
-int kesempatan = 3;
-
-while (!sesi && kesempatan > 0) {
-    
-    System.out.println("Login");
-    System.out.print("Masukkan username : ");
-    username = key.nextLine();
-    System.out.print("Masukkan password : ");
-    password = key.nextLine();
-
-    if (username.equalsIgnoreCase("admin") && password.equals("admin")) {
-        sesi = true; 
-    } else {
-        kesempatan--; 
-        System.out.println("Username atau Password salah");
-        System.out.println("Kesempatan : "+kesempatan);
-        
-    }
-
-}
-while (sesi) {
-    int pilih_menu = 0;
-        System.out.println("==============================");
-        System.out.println("|| 1.Booking kamar          ||");
-        System.out.println("|| 2.Manage kamar           ||");
-        System.out.println("|| 3.Manage tamu            ||");
-        System.out.println("|| 4.Riwayat Tamu           ||");
-        System.out.println("==============================");
-        System.out.print("Pilih menu : ");
-        pilih_menu = key.nextInt();
-
+    public static void menu(int pilih_menu) {
         switch (pilih_menu) {
             case 1:
-            Scanner scanner = new Scanner(System.in);
-
         // Harga kamar per hari atau per jam
-        int hargaKamar = 100; // Ganti dengan harga kamar yang sesuai
+        int hargaHari= 5000, hargaJam = 2000, nomorKamar,jumlah;
+        double totalHarga; 
+        String namaTamu;
 
         // Input nama tamu
         System.out.print("Masukkan nama tamu: ");
-        String namaTamu = scanner.next();
-
+        namaTamu = key.next();
         // Input nomor kamar yang dipesan
         System.out.print("Masukkan nomor kamar: ");
-        int nomorKamar = scanner.nextInt();
+        nomorKamar = key.nextInt();
 
         // Tampilkan pilihan menginap hari atau jam
         System.out.println("Pilihan menginap:");
         System.out.println("1. Menginap Hari");
         System.out.println("2. Menginap Jam");
         System.out.print("Pilih opsi (1/2): ");
-        int pilihan = scanner.nextInt();
+        int pilihan = key.nextInt();
 
-        int jumlah = 0;
-        double totalHarga = 0;
+        jumlah = 0;
+        totalHarga = 0;
 
         if (pilihan == 1) {
             // Pilihan pertama (hari)
             System.out.print("Masukkan jumlah hari: ");
             jumlah = key.nextInt();
-            totalHarga = hargaKamar * jumlah;
+            totalHarga = hargaHari * jumlah;
         } else if (pilihan == 2) {
             // Pilihan kedua (jam)
             System.out.print("Masukkan jumlah jam: ");
             jumlah = key.nextInt();
-            totalHarga = hargaKamar * jumlah / 24; // asumsi 1 hari = 24 jam
+            totalHarga = hargaJam * jumlah;
         }
-
         // Input pembayaran
+        System.out.println("===============================");
+        System.out.printf("%d\t", totalHarga );
+        System.out.println("===============================");
+        System.out.println("lanjutkan pembayaran ?");
+        System.out.println("1 Ya");
+        System.out.println("2 Tidak");
         System.out.print("Masukkan jumlah pembayaran: ");
-        double pembayaran = scanner.nextDouble();
+        double pembayaran = key.nextDouble();
+
+        System.out.print("Input tanggal masuk (hh-bb-yy)");
+        String tanggal = key.nextLine();
 
         // Proses pembayaran dan kembalian
         if (pembayaran > totalHarga) {
             double kembalian = pembayaran - totalHarga;
+            System.out.println("Nama Tamu: " + namaTamu);
+            System.out.println("Nomor Kamar: " + nomorKamar);
+            System.out.println("Tanggal Booking: " + tanggal);
+            System.out.println("Total Harga: " + totalHarga);
+            System.out.println("Pembayaran : "+ pembayaran);
             System.out.println("Kembalian: " + kembalian);
+            System.out.println("Status: Lunas");
+            
         } else if (pembayaran < totalHarga) {
             System.out.println("Pembayaran kurang. Transaksi dibatalkan.");
+             System.out.println("Nama Tamu: " + namaTamu);
+            System.out.println("Nomor Kamar: " + nomorKamar);
+            System.out.println("Tanggal Booking: " + tanggal);
+            System.out.println("Total Harga: " + totalHarga);
+            System.out.println("Status: Dibatalkan");
         } else {
             // Tampilkan informasi booking
             System.out.println("Nama Tamu: " + namaTamu);
             System.out.println("Nomor Kamar: " + nomorKamar);
-            System.out.println("Tanggal Booking: " + java.time.LocalDate.now());
+            System.out.println("Tanggal Booking: " + tanggal);
             System.out.println("Total Harga: " + totalHarga);
+            System.out.println("Pembayaran : "+ pembayaran);
             System.out.println("Status: Lunas");
         }
     
@@ -135,28 +120,61 @@ while (sesi) {
             case 3:
             System.out.println("tes 3");
             break;
+            case 4:
+            int MAX_TAMU = 100;
+            String[][] riwayatTamu = new String[MAX_TAMU][4];
+            String [] nama = {"ren" , "ron", "rin"}; 
+            String [] checkin = {"11-12-2023","12-12-2023","15-12-2023"};
+            String [] checkout = {"11-12-2023","12-12-2023","15-12-2023"};
+            int [] nomor_kamar = {1,2,3};
+
+
+            System.out.println("===RIWAYAT TAMU===");
+            for (int i = 0; i < nama.length; i++) { 
+                System.out.printf("%-3d| %-10s| %-20s| %-20s| %-3d | \n", (i+1), nama[i], checkin[i], checkout[i], nomor_kamar[i]);
+                    
+
+            }
+        
+                break;
     }
-}
-}
-}
-
-
-        
-    
-    
-
-
-
-         
- 
-        
-
-
-
- 
-
-
-
-
-
+    }
+public static void main(String[] args) {
 //login terlebih dahulu
+
+String username, password;
+boolean sesi = false;
+int kesempatan = 3;
+
+while (!sesi && kesempatan > 0) {
+
+    System.out.println("Login");
+    System.out.print("Masukkan username : ");
+    username = key.nextLine();
+    System.out.print("Masukkan password : ");
+    password = key.nextLine();
+
+    if (username.equalsIgnoreCase("admin") && password.equals("admin")) {
+        sesi = true; 
+    } else {
+        kesempatan--; 
+        System.out.println("Username atau Password salah");
+        System.out.println("Kesempatan : "+kesempatan);
+    }
+
+}
+while (sesi) {
+    int pilih_menu = 0;
+        System.out.println("==============================");
+        System.out.println("|| 1.Booking kamar          ||");
+        System.out.println("|| 2.Manage kamar           ||");
+        System.out.println("|| 3.Manage tamu            ||");
+        System.out.println("|| 4.Riwayat Tamu           ||");
+        System.out.println("==============================");
+        System.out.print("Pilih menu : ");
+        pilih_menu = key.nextInt();
+        menu(pilih_menu);
+
+}
+}
+}
