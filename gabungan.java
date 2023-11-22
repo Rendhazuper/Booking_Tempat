@@ -1,41 +1,9 @@
 import java.util.*;
 public class gabungan {
-public static void main(String[] args) {
-//login terlebih dahulu
-Scanner key = new Scanner(System.in);
-String username, password;
-boolean sesi = false;
-int kesempatan = 3;
+    static Scanner key = new Scanner(System.in);
 
-while (!sesi && kesempatan > 0) {
-
-    System.out.println("Login");
-    System.out.print("Masukkan username : ");
-    username = key.nextLine();
-    System.out.print("Masukkan password : ");
-    password = key.nextLine();
-
-    if (username.equalsIgnoreCase("admin") && password.equals("admin")) {
-        sesi = true; 
-    } else {
-        kesempatan--; 
-        System.out.println("Username atau Password salah");
-        System.out.println("Kesempatan : "+kesempatan);
-    }
-
-}
-while (sesi) {
-    int pilih_menu = 0;
-        System.out.println("==============================");
-        System.out.println("|| 1.Booking kamar          ||");
-        System.out.println("|| 2.Manage kamar           ||");
-        System.out.println("|| 3.Manage tamu            ||");
-        System.out.println("|| 4.Riwayat Tamu           ||");
-        System.out.println("==============================");
-        System.out.print("Pilih menu : ");
-        pilih_menu = key.nextInt();
-
-        switch (pilih_menu) {
+    public static void menu(int pilih_menu) {
+              switch (pilih_menu) {
             case 1:
         // Harga kamar per hari atau per jam
         int hargaHari= 5000, hargaJam = 2000, nomorKamar,jumlah;
@@ -174,23 +142,46 @@ while (sesi) {
 }
 }
 
+public static void main(String[] args) {
+
+String username, password;
+boolean sesi = false;
+int kesempatan = 3;
+
+while (!sesi && kesempatan > 0) {
+
+    System.out.println("Login");
+    System.out.print("Masukkan username : ");
+    username = key.nextLine();
+    System.out.print("Masukkan password : ");
+    password = key.nextLine();
+
+    if (username.equalsIgnoreCase("admin") && password.equals("admin")) {
+        sesi = true; 
+    } else {
+        kesempatan--; 
+        System.out.println("Username atau Password salah");
+        System.out.println("Kesempatan : "+kesempatan);
+    }
+
+}
+while (sesi) {
+    int pilih_menu = 0;
+        System.out.println("==============================");
+        System.out.println("|| 1.Booking kamar          ||");
+        System.out.println("|| 2.Manage kamar           ||");
+        System.out.println("|| 3.Manage tamu            ||");
+        System.out.println("|| 4.Riwayat Tamu           ||");
+        System.out.println("==============================");
+        System.out.print("Pilih menu : ");
+        pilih_menu = key.nextInt();
+        menu(pilih_menu);
+}
+}
+}
+
 
         
     
     
 
-
-
-         
- 
-        
-
-
-
- 
-
-
-
-
-
-//login terlebih dahulu
