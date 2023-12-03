@@ -81,6 +81,7 @@ while (sesi) {
         System.out.print("Pilih menu : ");
         pilih_menu = key.nextInt();
         switch (pilih_menu) {
+
             case 1:
             System.out.println("");
                 break;
@@ -100,24 +101,3 @@ while (sesi) {
 }
 }
 
-
-
-        
-    
-    
-
-
-
-         
- 
-        
-
-
-
- 
-
-
-
-
-
-//login terlebih dahulu
