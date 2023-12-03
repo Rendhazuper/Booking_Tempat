@@ -31,6 +31,7 @@ static{
     kamar[1][7] = 208;
     kamar[1][8] = 209;
     kamar[1][9] = 210;
+    kamar[1][10] = 211;
     
 
     tipeKasur[1] = "single bed";
@@ -65,6 +66,24 @@ static int foundnull(){
         }
     }
     return -1;
+}
+
+static void tampilkamar(){
+    System.out.println("================================================");
+    System.out.println("|\t Lantai \t|\t No. Kamar \t|");
+    System.out.println("================================================");
+    for (int i = 0; i < kamar.length; i++) {
+        for (int j = 0; j < kamar[i].length; j++) {
+            int lantai = i;
+            if (kamar[i][j] != 0) {
+                System.out.printf("| %-21d |\t %-14d |\n",lantai+1,  kamar[i][j]);
+            }
+            
+        }
+        System.out.println("------------------------------------------------");
+        
+    }
+    // System.out.println("================================================");
 }
 
 public static void main(String[] args) {
@@ -103,14 +122,14 @@ while (sesi) {
         switch (pilih_menu) {
 
             case 1:
-
             int index = foundnull();
 
              if (index != -1) {
                 System.out.print("Masukkan Nama Tamu: ");
                 key.nextLine();
             String namaTamu = key.nextLine();
-            System.out.print("Masukkan Nomor HP: ");
+            tampilkamar();
+            System.out.print("Masukkan Nomor kamar : ");
             String inputNomor = key.nextLine();
             System.out.print("Masukkan tanggal Check-in (format dd-mm-yyy)");
             String inputcheckin = key.nextLine();
@@ -136,7 +155,7 @@ while (sesi) {
                 break;
         
             default:
-                break;
+                continue;
         }
 }
 }
