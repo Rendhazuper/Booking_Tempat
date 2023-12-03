@@ -1,11 +1,11 @@
 import java.util.*;
+import java.util.Date;
 public class gabungan {
 static Scanner key = new Scanner(System.in);
-static int[][] kamar = new int[2][];
+static int[][] kamar = new int[2][20];
 static String[] tipeKasur  = new String[3];
 static String[] ketersediaan = new String[2];
 static int[] hargahari = new int[2];
-static int[] hargajam = new int[2];
 
 
 //persiapan array untuk format data input tamu 
@@ -31,6 +31,7 @@ static{
     kamar[1][7] = 208;
     kamar[1][8] = 209;
     kamar[1][9] = 210;
+    
 
     tipeKasur[1] = "single bed";
     tipeKasur[2] = "double bed";
@@ -41,11 +42,30 @@ static{
     hargahari[0] = 145000;
     hargahari[1] = 200000;
 
-    hargajam[0] = 50000;
-    hargajam[1] = 75000;
+    //data array input tamu
+    Nama[0]  = "Ren";
+    Nama[1]  = "Viona";
+
+    nomorHP[0] = "082141744866";
+    nomorHP[1] = "088882828282";
+
+    //format dd/mm/yyy
+    checkin[0] = "12-12-2023";
+    checkin[1] = "13-12-2023";
+
+    checkout[0] = "24-12-2023";
+    checkout[1] = "25-12-2023";
 
 }
 
+static int foundnull(){
+    for (int i = 0; i < Nama.length; i++) {
+        if (Nama[i] != null) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 public static void main(String[] args) {
 //login terlebih dahulu
@@ -83,7 +103,28 @@ while (sesi) {
         switch (pilih_menu) {
 
             case 1:
-            System.out.println("");
+
+            int index = foundnull();
+
+             if (index != -1) {
+                System.out.print("Masukkan Nama Tamu: ");
+                key.nextLine();
+            String namaTamu = key.nextLine();
+            System.out.print("Masukkan Nomor HP: ");
+            String inputNomor = key.nextLine();
+            System.out.print("Masukkan tanggal Check-in (format dd-mm-yyy)");
+            String inputcheckin = key.nextLine();
+            System.out.print("Masukkan tanggal check-out (format dd-mm-yyy)");
+            String inputcheckout = key.nextLine();
+
+                Nama[index] = namaTamu;
+                nomorHP[index] = inputNomor;
+                checkin[index] = inputcheckin;
+                checkout[index] = inputcheckout;
+            }else{
+                System.out.println("maaf kamar sudah penuh");
+            }
+           
                 break;
             
             case 2:
