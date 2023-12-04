@@ -7,14 +7,25 @@ static String[] ketersediaan = new String[2];
 static int[] harga = new int[2];
 
 
+
 //persiapan array untuk format data input tamu 
+static String [] Tamu = new String[100];
 static String [] Nama = new String[20];
 static String[] nomorHP = new String[20];
 static String[] checkin = new String[20];
 static String[] checkout = new String[20];
-
 static int[][] kamarDipesan = new int [20][5];
 
+
+public static void Tamu() {
+   System.out.println("=========================================================================================================================");
+    System.out.println("|\t Nomor \t|\t Nama \t|\t No. Hp \t|\tTanggal checkin \t|\t Tanggal checkout \t|");
+    System.out.println("=========================================================================================================================");
+    for (int i = 0; i < kamar.length; i++) {
+
+                System.out.printf("| %-13d |\t %-6s |\t %-14s |\t %-22s |\t %-22s |\n",i+1, Nama[i], nomorHP[i], checkin[i], checkout[i]);
+            }
+        }
 
 //pengisian data array
 static{ 
@@ -33,15 +44,12 @@ static{
     kamar[1][7] = 208;
     kamar[1][8] = 209;
     kamar[1][9] = 210;
-    kamar[1][10] = 211;
-    
-    kamarDipesan[0] = new int[]{101,102,103};
 
     tipeKasur[1] = "single bed";
     tipeKasur[2] = "double bed";
 
     ketersediaan[0] = "tersedia";
-    ketersediaan[1] = "tersedia";
+    ketersediaan[1] = "tidak tersedia";
 
     harga[0] = 145000;
     harga[1] = 200000;
@@ -95,17 +103,18 @@ static void tampilkamar() {
     System.out.println("| Lantai | No. Kamar | Harga | Ketersediaan |");
     System.out.println("========================================");
     for (int i = 0; i < kamar.length; i++) {
-        for (int j = 0; j < kamar[i].length; j++) {  
+        for (int j = 0; j < kamar[i].length; j++) {
             int nomorKamar = kamar[i][j];
         if (nomorKamar != 0) {
-            System.out.printf("| %-6d | %-9d | %-5d | %-13s |\n",
-                    i + 1, nomorKamar, harga[i], ketersediaan[i]);      
-        }
-        
+                System.out.printf("| %-6d | %-9d | %-5d | %-13s |\n",
+                    i + 1, nomorKamar, harga[i], ketersediaan[i]);
+            }
+
         }
     }
-    System.out.println("----------------------------------------");
+System.out.println("----------------------------------------");
 }
+
 
 public static void main(String[] args) {
 //login terlebih dahulu
@@ -143,7 +152,7 @@ while (sesi) {
         switch (pilih_menu) {
 
             case 1:
-            int index = foundnull();
+int index = foundnull();
 
              if (index != -1) {
                 System.out.print("Masukkan Nama Tamu: ");
@@ -164,13 +173,11 @@ while (sesi) {
             }else{
                 System.out.println("maaf kamar sudah penuh");
             }
-           
+            
                 break;
-           
-             
             
             case 2:
-            System.out.print("Masukkan tanggal yang ingin dicek (format dd-mm-yyyy): ");
+System.out.print("Masukkan tanggal yang ingin dicek (format dd-mm-yyyy): ");
             String tanggalCek = key.next();
             perbaruiKetersediaanBerdasarkanCheckin(tanggalCek);
             tampilkamar();
@@ -178,12 +185,15 @@ while (sesi) {
                 break;
 
             case 3:
+            Tamu();
 
                 break;
         
             default:
-                continue;
+                break;
         }
 }
 }
-}
+        }
+
+
