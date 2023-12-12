@@ -109,6 +109,29 @@ static void tampilkamar() {
     }
     System.out.println("--------------------------------------------");
 }
+
+static void hapusTamu(String namaCO){
+int indextamu = -1 ;
+            for (int i = 0; i < Nama.length; i++) {
+                if (Nama[i] != null && Nama[i].equals(namaCO)) {
+                    indextamu = i;
+                    break;
+                    
+                }
+                
+            }    
+            
+            if (indextamu != -1) {
+                System.out.println(namaCO + " Berhasil checkout");
+                Nama[indextamu] = null;
+                nomorHP[indextamu] = null;
+                checkin[indextamu] = null;
+                checkout[indextamu] = null;
+                kamarpesan[indextamu] = 0;
+            }else{
+                System.out.println("tidak ada tamu dengan nama "+ namaCO);
+            }
+}
 public static void main(String[] args) {
 //login terlebih dahulu
 
@@ -179,32 +202,13 @@ while (sesi) {
             case 2 : 
             Tamu();
 
-            System.out.println("masukkan nama tamu yang ingin checkout : ");
+            System.out.print("masukkan nama tamu yang ingin checkout : ");
             String namaCO = key.next();
             key.nextLine();
 
-            int indextamu = -1 ;
-            for (int i = 0; i < Nama.length; i++) {
-                if (Nama[i] != null && Nama[i].equals(namaCO)) {
-                    indextamu = i;
-                    break;
-                    
-                }
-                
-            }    
-            System.out.println(namaCO + " Berhasil checkout");
-            if (indextamu != -1) {
-                Nama[indextamu] = null;
-                nomorHP[indextamu] = null;
-                checkin[indextamu] = null;
-                checkout[indextamu] = null;
-                kamarpesan[indextamu] = 0;
+            hapusTamu(namaCO);
 
-                
-
-            }else{
-                System.out.println("tidak tamu dengan nama "+ namaCO);
-            }
+            
              break; 
             
             case 3:
