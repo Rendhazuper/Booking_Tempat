@@ -2,7 +2,6 @@ import java.util.*;
 public class gabungan {
 static Scanner key = new Scanner(System.in);
 static int[][] kamar = new int[2][20];
-static String[][] ketersediaan = new String[2][20];
 static String[] tipeKasur  = new String[3];
 static int[] harga = new int[2];
 static int[] kamarpesan = new int [20];
@@ -35,23 +34,6 @@ static{
 
     kamarpesan[0] = 211;
     kamarpesan[1] = 210;
-
-    ketersediaan[0][0] = "tersedia"; 
-    ketersediaan[0][1] = "tersedia";
-    ketersediaan[0][2] = "tersedia";
-    ketersediaan[0][3] = "tersedia";
-    ketersediaan[0][4] = "tersedia";
-    ketersediaan[1][0] = "tersedia";
-    ketersediaan[1][1] = "tersedia";
-    ketersediaan[1][2] = "tersedia";
-    ketersediaan[1][3] = "tersedia";
-    ketersediaan[1][4] = "tersedia";
-    ketersediaan[1][5] = "tersedia";
-    ketersediaan[1][6] = "tersedia";
-    ketersediaan[1][7] = "tersedia";
-    ketersediaan[1][8] = "tersedia";
-    ketersediaan[1][9] = "tersedia";
-    ketersediaan[1][10] = "tersedia";
 
     tipeKasur[1] = "single bed";
     tipeKasur[2] = "double bed";
@@ -106,8 +88,7 @@ static void tampilkamar() {
     for (int i = 0; i < kamar.length; i++) {
         for (int j = 0; j < kamar[i].length; j++) {
             int nomorKamar = kamar[i][j];
-            String sedia = ketersediaan[i][j];
-            if (nomorKamar != 0 && sedia != "null") {
+            if (nomorKamar != 0) {
                 boolean dipesan = false;
                 for (int k = 0; k < kamarpesan.length; k++) {
                     if (kamarpesan[k] == nomorKamar) {
@@ -121,7 +102,7 @@ static void tampilkamar() {
                         i + 1, nomorKamar, harga[i], "tidak tersedia");  
                 } else {
                     System.out.printf("| %-6d | %-9d | %-5d | %-13s |\n",
-                        i + 1, nomorKamar, harga[i], sedia);  
+                        i + 1, nomorKamar, harga[i], "Tersedia");  
                 }
             }
         }
@@ -155,15 +136,18 @@ while (!sesi && kesempatan > 0) {
 while (sesi) {
     int pilih_menu = 0;
         System.out.println("==============================");
-        System.out.println("|| 1.Booking kamar          ||");
-        System.out.println("|| 2.Manage kamar           ||");
-        System.out.println("|| 3.Riwayat Tamu           ||");
+        System.out.println("|| 1.Check in               ||");
+        System.out.println("|| 2.Check Out              ||");
+        System.out.println("|| 3.Manage kamar           ||");
+        System.out.println("|| 4.Riwayat Tamu           ||");
         System.out.println("==============================");
         System.out.print("Pilih menu : ");
         pilih_menu = key.nextInt();
         switch (pilih_menu) {
 
             case 1:
+
+
             int index = foundnull();    
 
              if (index != -1) {
@@ -191,16 +175,44 @@ while (sesi) {
             }
            
                 break;
-           
-             
+
+            case 2 : 
+            Tamu();
+
+            System.out.println("masukkan nama tamu yang ingin checkout : ");
+            String namaCO = key.next();
+            key.nextLine();
+
+            int indextamu = -1 ;
+            for (int i = 0; i < Nama.length; i++) {
+                if (Nama[i] != null && Nama[i].equals(namaCO)) {
+                    indextamu = i;
+                    break;
+                    
+                }
+                
+            }    
+            System.out.println(namaCO + " Berhasil checkout");
+            if (indextamu != -1) {
+                Nama[indextamu] = null;
+                nomorHP[indextamu] = null;
+                checkin[indextamu] = null;
+                checkout[indextamu] = null;
+
+                
+
+            }else{
+                System.out.println("tidak tamu dengan nama "+ namaCO);
+            }
+             break; 
             
-            case 2:
+            case 3:
            
             tampilkamar();
 
                 break;
 
-            case 3:
+            case 4:
             Tamu();
 
                 break;
