@@ -198,6 +198,7 @@ while (sesi) {
                 nomorHP[indextamu] = null;
                 checkin[indextamu] = null;
                 checkout[indextamu] = null;
+                kamarpesan[indextamu] = 0;
 
                 
 
