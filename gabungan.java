@@ -1,4 +1,5 @@
 import java.util.*;
+
 public class gabungan {
 static Scanner key = new Scanner(System.in);
 static int[][] kamar = new int[2][20];
@@ -68,13 +69,13 @@ static int foundnull(){
 
 static void Tamu() {
     System.out.println("================================================================================================================================================");
-    System.out.println("|Nomor \t|\t Nama \t|\t No. Hp \t|\tTanggal checkin \t|\t Tanggal checkout \t|\t Nomor kamar \t");
+    System.out.println("|Nomor \t|\t Nama \t|\t No. Hp \t|\tTanggal checkin \t|\t Tanggal checkout \t|\t Nomor kamar \t       |");
     System.out.println("================================================================================================================================================");
     for (int i = 0; i < Nama.length; i++) {
         if (Nama[i] == null ) {
              continue;
         }else{
-            System.out.printf("| %-5d |\t %-6s |\t %-14s |\t %-22s |\t %-22s |\t %-22s |\n",i+1, Nama[i], nomorHP[i], checkin[i], checkout[i], kamarpesan[i]);
+            System.out.printf("| %-5d |\t %-6s |\t %-14s |\t %-22s |\t %-22s |\t %-21s |\n",i+1, Nama[i], nomorHP[i], checkin[i], checkout[i], kamarpesan[i]);
         }
        
     }
@@ -82,9 +83,9 @@ static void Tamu() {
 }
 
 static void tampilkamar() {
-    System.out.println("============================================");
-    System.out.println("| Lantai | No. Kamar | Harga | Ketersediaan |");
-    System.out.println("============================================");
+    System.out.println("====================================================");
+    System.out.println("| Lantai | No. Kamar | Harga | Ketersediaan \t   |");
+    System.out.println("====================================================");
     for (int i = 0; i < kamar.length; i++) {
         for (int j = 0; j < kamar[i].length; j++) {
             int nomorKamar = kamar[i][j];
@@ -98,16 +99,16 @@ static void tampilkamar() {
                 }
                 
                 if (dipesan) {
-                    System.out.printf("| %-6d | %-9d | %-5d | %-13s |\n",
+                    System.out.printf("| %-6d | %-9d | %-5d | %-18s |\n",
                         i + 1, nomorKamar, harga[i], "tidak tersedia");  
                 } else {
-                    System.out.printf("| %-6d | %-9d | %-5d | %-13s |\n",
+                    System.out.printf("| %-6d | %-9d | %-5d | %-18s |\n",
                         i + 1, nomorKamar, harga[i], "Tersedia");  
                 }
             }
         }
     }
-    System.out.println("--------------------------------------------");
+    System.out.println("----------------------------------------------------");
 }
 
 static void hapusTamu(String namaCO){
@@ -132,6 +133,46 @@ int indextamu = -1 ;
                 System.out.println("tidak ada tamu dengan nama "+ namaCO);
             }
 }
+
+static int hitunghari(int haricekin, int haricekout){
+    int jumlah = haricekout-haricekin;
+    return jumlah; 
+}
+
+static void pembayaran(int menu2, int jumlahbayar, String nama, String tglcheckin, String tglcheckout, String nohp, int nomorkamar, int index){
+    switch (menu2) {
+        case 1:
+        System.out.println("masukkan pembayaran : ");
+        int bayar = key.nextInt();
+        if (bayar == jumlahbayar) {
+            System.out.println("kamar berhasil di booking");
+            Nama[index] = nama;
+            checkin[index] = tglcheckin;
+            checkout[index] = tglcheckout;
+            kamarpesan[index] = nomorkamar;
+            nomorHP[index] = nohp;
+        }else if (bayar > jumlahbayar) {
+            System.out.println("kamar berhasil di booking");
+            int kembalian = jumlahbayar - bayar;
+            System.out.println("kembalian : "+ kembalian);
+            Nama[index] = nama;
+            checkin[index] = tglcheckin;
+            checkout[index] = tglcheckout;
+            kamarpesan[index] = nomorkamar;
+            nomorHP[index] = nohp;
+        }else{
+            System.out.println("pembayaran tidak berhasil");
+            System.out.println("uang tidak mencukupi");
+        }
+            
+            break;
+    
+        case 2:
+            break;
+    }
+}
+
+
 public static void main(String[] args) {
 //login terlebih dahulu
 
@@ -159,9 +200,9 @@ while (!sesi && kesempatan > 0) {
 while (sesi) {
     int pilih_menu = 0;
         System.out.println("==============================");
-        System.out.println("|| 1.Check in               ||");
+        System.out.println("|| 1.Booking kamar          ||");
         System.out.println("|| 2.Check Out              ||");
-        System.out.println("|| 3.Manage kamar           ||");
+        System.out.println("|| 3.Ketersediaan kamar     ||");
         System.out.println("|| 4.Riwayat Tamu           ||");
         System.out.println("==============================");
         System.out.print("Pilih menu : ");
@@ -169,8 +210,7 @@ while (sesi) {
         switch (pilih_menu) {
 
             case 1:
-
-
+            int indexlantai = -1;
             int index = foundnull();    
 
              if (index != -1) {
@@ -183,16 +223,53 @@ while (sesi) {
             key.nextLine();
             System.out.print("Masukkan tanggal Check-in (format dd-mm-yyy) : ");
             String inputcheckin = key.nextLine();
-            System.out.print("Masukkan tanggal check-out (format dd-mm-yyy) : ");
+            System.out.print("Masukkan tanggal check-out (format dd-mm-yyy: ");
             String inputcheckout = key.nextLine();
             System.out.print("input nomor hp : ");
             String nohp = key.nextLine();
 
-                Nama[index] = namaTamu;
-                kamarpesan[index] = inputNomor;
-                checkin[index] = inputcheckin;
-                checkout[index] = inputcheckout;
-                nomorHP[index] = nohp;
+                
+            
+            int nomorkamardipesan = inputNomor;
+
+            String[] partsCheckin = inputcheckin.split("-");
+            String[] partsCheckout = inputcheckout.split("-");;
+
+            int haricekin = Integer.parseInt(partsCheckin[0]);
+            int haricekout = Integer.parseInt(partsCheckout[0]);
+
+            int jumlahhari = hitunghari(haricekin, haricekout);
+
+            for (int i = 0; i < kamar.length; i++) {
+                for ( int j = 0; j < kamar[i].length; j++) {
+                    if (kamar[i][j] == nomorkamardipesan) {
+                        indexlantai = i;
+                        break;
+                    
+                }
+                
+                    
+                }
+            }
+            if (indexlantai != -1) {
+            int hargakamar = harga[indexlantai];
+            int jumlahbayar = hargakamar * jumlahhari;
+            System.out.println("================= Detail Pemesanan ================");
+            System.out.println("|Nama              : "+namaTamu+"                   \t  |");
+            System.out.println("|Nomor kamar       : "+inputNomor+"                 \t  |");
+            System.out.println("|Tanggal check-in  : "+inputcheckin+"               \t\t  |");
+            System.out.println("|Tanggal check-out : "+inputcheckout+"              \t\t  |");
+            System.out.println("|Jumlah bayar      : "+jumlahbayar+"                \t  |");
+            System.out.println("===================================================");
+
+            System.out.println("apakah ingin lanjut pembayaran ? : ");
+            System.out.println("1. ya ");
+            System.out.println("2. tidak ");
+            System.out.print("input pilihan : ");
+            int menu2 = key.nextInt();
+            pembayaran(menu2, jumlahbayar,namaTamu,inputcheckin,inputcheckout,nohp,inputNomor,index);
+            }
+            
             }else{
                 System.out.println("maaf kamar sudah penuh");
             }
