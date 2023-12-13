@@ -7,6 +7,10 @@ static String[] tipeKasur  = new String[3];
 static int[] harga = new int[2];
 static int[] kamarpesan = new int [20];
 
+//array riwayat
+static String[]  namariwayat = new String[20];
+
+
 
 //persiapan array untuk format data input tamu 
 static String [] Nama = new String[20];
@@ -56,6 +60,11 @@ static{
     checkout[0] = "24-12-2023";
     checkout[1] = "25-12-2023";
 
+    //data riwayat tamu
+    namariwayat[0]  = "Ren";
+    namariwayat[1]  = "Viona";
+
+
 }
 
 static int foundnull(){
@@ -68,18 +77,33 @@ static int foundnull(){
 }
 
 static void Tamu() {
-    System.out.println("================================================================================================================================================");
-    System.out.println("|Nomor \t|\t Nama \t|\t No. Hp \t|\tTanggal checkin \t|\t Tanggal checkout \t|\t Nomor kamar \t       |");
-    System.out.println("================================================================================================================================================");
+    System.out.println("=========================================================================================================================");
+    System.out.println("|Nama \t |\t No. Hp \t|\tTanggal checkin \t|\t Tanggal checkout \t|\t Nomor kamar \t|");
+    System.out.println("=========================================================================================================================");
     for (int i = 0; i < Nama.length; i++) {
         if (Nama[i] == null ) {
              continue;
         }else{
-            System.out.printf("| %-5d |\t %-6s |\t %-14s |\t %-22s |\t %-22s |\t %-21s |\n",i+1, Nama[i], nomorHP[i], checkin[i], checkout[i], kamarpesan[i]);
+            System.out.printf("| %-6s |\t %-14s |\t %-22s |\t %-22s |\t %12d  |\n", Nama[i], nomorHP[i], checkin[i], checkout[i], kamarpesan[i]);
         }
        
     }
-    System.out.println("================================================================================================================================================");
+    System.out.println("=========================================================================================================================");
+}
+
+static void riwayattamu(){
+    System.out.println("=========================================================================================================================");
+    System.out.println("|Nama \t |\t No. Hp \t|\tTanggal checkin \t|\t Tanggal checkout \t|\t Nomor kamar\t|");
+    System.out.println("=========================================================================================================================");
+    for (int i = 0; i < namariwayat.length; i++) {
+        if (namariwayat[i] == null ) {
+             continue;
+        }else{
+            System.out.printf("| %-6s |\t %-14s |\t %-22s |\t %-22s |\t %12d  |\n", namariwayat[i], nomorHP[i], checkin[i], checkout[i], kamarpesan[i]);
+        }
+       
+    }
+    System.out.println("=========================================================================================================================");
 }
 
 static void tampilkamar() {
@@ -125,10 +149,10 @@ int indextamu = -1 ;
             if (indextamu != -1) {
                 System.out.println(namaCO + " Berhasil checkout");
                 Nama[indextamu] = null;
-                nomorHP[indextamu] = null;
-                checkin[indextamu] = null;
-                checkout[indextamu] = null;
-                kamarpesan[indextamu] = 0;
+                // nomorHP[indextamu] = null;
+                // checkin[indextamu] = null;
+                // checkout[indextamu] = null;
+                // kamarpesan[indextamu] = 0;
             }else{
                 System.out.println("tidak ada tamu dengan nama "+ namaCO);
             }
@@ -147,6 +171,7 @@ static void pembayaran(int menu2, int jumlahbayar, String nama, String tglchecki
         if (bayar == jumlahbayar) {
             System.out.println("kamar berhasil di booking");
             Nama[index] = nama;
+            namariwayat[index]= nama;
             checkin[index] = tglcheckin;
             checkout[index] = tglcheckout;
             kamarpesan[index] = nomorkamar;
@@ -156,6 +181,7 @@ static void pembayaran(int menu2, int jumlahbayar, String nama, String tglchecki
             int kembalian = jumlahbayar - bayar;
             System.out.println("kembalian : "+ kembalian);
             Nama[index] = nama;
+            namariwayat[index]= nama;
             checkin[index] = tglcheckin;
             checkout[index] = tglcheckout;
             kamarpesan[index] = nomorkamar;
@@ -295,7 +321,7 @@ while (sesi) {
                 break;
 
             case 4:
-            Tamu();
+            riwayattamu();
 
                 break;
         
