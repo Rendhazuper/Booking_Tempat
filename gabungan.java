@@ -286,6 +286,7 @@ while (sesi) {
             System.out.println("|Tanggal check-in  : "+inputcheckin+"               \t\t  |");
             System.out.println("|Tanggal check-out : "+inputcheckout+"              \t\t  |");
             System.out.println("|Jumlah bayar      : "+jumlahbayar+"                \t  |");
+            System.out.println("|Tipe Kasur        : "+tipeKasur[index-1]+"                \t  |");
             System.out.println("===================================================");
 
             System.out.println("apakah ingin lanjut pembayaran ? : ");
