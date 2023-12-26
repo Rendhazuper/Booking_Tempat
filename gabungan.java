@@ -6,6 +6,7 @@ static int[][] kamar = new int[2][20];
 static String[] tipeKasur  = new String[3];
 static int[] harga = new int[2];
 static int[] kamarpesan = new int [20];
+static String[] tanggal = new String [7];
 
 //array riwayat
 static String[]  namariwayat = new String[20];
@@ -37,6 +38,14 @@ static{
     kamar[1][9] = 210;
     kamar[1][10] = 211;
 
+    tanggal[0] = "1-12-2023";
+    tanggal[1] = "2-12-2023";
+    tanggal[2] = "3-12-2023";
+    tanggal[3] = "4-12-2023";
+    tanggal[4] = "5-12-2023";
+    tanggal[5] = "6-12-2023";
+    tanggal[6] = "7-12-2023";
+    
     kamarpesan[0] = 211;
     kamarpesan[1] = 210;
 
@@ -54,11 +63,11 @@ static{
     nomorHP[1] = "088882828282";
 
     //format dd/mm/yyy
-    checkin[0] = "12-12-2023";
-    checkin[1] = "13-12-2023";
+    checkin[0] = "3-12-2023";
+    checkin[1] = "2-12-2023";
 
-    checkout[0] = "24-12-2023";
-    checkout[1] = "25-12-2023";
+    checkout[0] = "2-12-2023";
+    checkout[1] = "3-12-2023";
 
     //data riwayat tamu
     namariwayat[0]  = "Ren";
@@ -74,6 +83,12 @@ static int foundnull(){
         }
     }
     return -1;
+}
+static void tampiltanggal(){
+    System.out.println("silahkan pilih tanggal");
+    for (int i = 0; i < tanggal.length; i++) {
+        System.out.println(i+1 + ". " + tanggal[i]);
+    }
 }
 
 static void Tamu() {
@@ -106,7 +121,7 @@ static void riwayattamu(){
     System.out.println("=========================================================================================================================");
 }
 
-static void tampilkamar() {
+static void tampilkamar(int pilihtanggal) {
     System.out.println("====================================================");
     System.out.println("| Lantai | No. Kamar | Harga | Ketersediaan \t   |");
     System.out.println("====================================================");
@@ -116,7 +131,7 @@ static void tampilkamar() {
             if (nomorKamar != 0) {
                 boolean dipesan = false;
                 for (int k = 0; k < kamarpesan.length; k++) {
-                    if (kamarpesan[k] == nomorKamar) {
+                    if (kamarpesan[k] == nomorKamar && checkin[k].equals(tanggal[pilihtanggal])) {
                         dipesan = true;
                         break;
                     }
@@ -152,40 +167,44 @@ int indextamu = -1 ;
                 // nomorHP[indextamu] = null;
                 // checkin[indextamu] = null;
                 // checkout[indextamu] = null;
-                // kamarpesan[indextamu] = 0;
+                kamarpesan[indextamu] = 0;
             }else{
                 System.out.println("tidak ada tamu dengan nama "+ namaCO);
             }
 }
 
-static int hitunghari(int haricekin, int haricekout){
+static int hitunghari(int tgl_checkin, int tgl_checkout){
+    String[] partsCheckin = tanggal[tgl_checkin].split("-");
+    String[] partsCheckout = tanggal[tgl_checkout].split("-");;
+    int haricekin = Integer.parseInt(partsCheckin[0]);
+    int haricekout = Integer.parseInt(partsCheckout[0]);
     int jumlah = haricekout-haricekin;
     return jumlah; 
 }
 
-static void pembayaran(int menu2, int jumlahbayar, String nama, String tglcheckin, String tglcheckout, String nohp, int nomorkamar, int index){
-    switch (menu2) {
-        case 1:
-        System.out.println("masukkan pembayaran : ");
-        int bayar = key.nextInt();
-        if (bayar == jumlahbayar) {
-            System.out.println("kamar berhasil di booking");
-            Nama[index] = nama;
-            namariwayat[index]= nama;
-            checkin[index] = tglcheckin;
-            checkout[index] = tglcheckout;
-            kamarpesan[index] = nomorkamar;
-            nomorHP[index] = nohp;
-        }else if (bayar > jumlahbayar) {
-            System.out.println("kamar berhasil di booking");
-            int kembalian = jumlahbayar - bayar;
-            System.out.println("kembalian : "+ kembalian);
-            Nama[index] = nama;
-            namariwayat[index]= nama;
-            checkin[index] = tglcheckin;
-            checkout[index] = tglcheckout;
-            kamarpesan[index] = nomorkamar;
-            nomorHP[index] = nohp;
+    static void pembayaran(int menu2, int jumlahbayar, String nama, String tglcheckin, String tglcheckout, String nohp, int nomorkamar, int index){
+        switch (menu2) {
+            case 1:
+            System.out.println("masukkan pembayaran : ");
+            int bayar = key.nextInt();
+            if (bayar == jumlahbayar) {
+                System.out.println("kamar berhasil di booking");
+                Nama[index] = nama;
+                namariwayat[index]= nama;
+                checkin[index] = tglcheckin;
+                checkout[index] = tglcheckout;
+                kamarpesan[index] = nomorkamar;
+                nomorHP[index] = nohp;
+            }else if (bayar > jumlahbayar) {
+                System.out.println("kamar berhasil di booking");
+                int kembalian = jumlahbayar - bayar;
+                System.out.println("kembalian : "+ kembalian);
+                Nama[index] = nama;
+                namariwayat[index]= nama;
+                checkin[index] = tglcheckin;
+                checkout[index] = tglcheckout;
+                kamarpesan[index] = nomorkamar;
+                nomorHP[index] = nohp;
         }else{
             System.out.println("pembayaran tidak berhasil");
             System.out.println("uang tidak mencukupi");
@@ -237,44 +256,39 @@ while (sesi) {
 
             case 1:
             int indexlantai = -1;
-            int index = foundnull();    
+            int index = foundnull();   
+ 
 
-             if (index != -1) {
-                System.out.print("Masukkan Nama Tamu: ");
-                key.nextLine();
+            if (index != -1) {
+            tampiltanggal();
+            System.out.print("Input tanggal checkin : ");
+            int input_tglin = key.nextInt();
+            int tgl_checkin = input_tglin-1;    
+            System.out.print("Input tanggal checkout : ");
+            int input_tglout = key.nextInt();
+            int tgl_checkout = input_tglout-1;
+            System.out.print("Masukkan Nama Tamu: ");
+            key.nextLine();
             String namaTamu = key.nextLine();
-            tampilkamar();
+            tampilkamar(tgl_checkin);
             System.out.print("Masukkan Nomor kamar : ");
             int inputNomor = key.nextInt();
             key.nextLine();
-            System.out.print("Masukkan tanggal Check-in (format dd-mm-yyy) : ");
-            String inputcheckin = key.nextLine();
-            System.out.print("Masukkan tanggal check-out (format dd-mm-yyy: ");
-            String inputcheckout = key.nextLine();
-            System.out.print("input nomor hp : ");
-            String nohp = key.nextLine();
 
-                
-            
+            System.out.println("Masukkan nomor hp ");  
+            String nohp = key.next();
+            key.nextLine();
+            int jumlahhari = hitunghari(tgl_checkin, tgl_checkout);
             int nomorkamardipesan = inputNomor;
-
-            String[] partsCheckin = inputcheckin.split("-");
-            String[] partsCheckout = inputcheckout.split("-");;
-
-            int haricekin = Integer.parseInt(partsCheckin[0]);
-            int haricekout = Integer.parseInt(partsCheckout[0]);
-
-            int jumlahhari = hitunghari(haricekin, haricekout);
-
-            for (int i = 0; i < kamar.length; i++) {
+            if (jumlahhari <= 0) {
+                System.out.println("input hari tidak valid");
+            } else {
+                for (int i = 0; i < kamar.length; i++) {
                 for ( int j = 0; j < kamar[i].length; j++) {
                     if (kamar[i][j] == nomorkamardipesan) {
                         indexlantai = i;
                         break;
-                    
-                }
-                
-                    
+                    }
                 }
             }
             if (indexlantai != -1) {
@@ -283,26 +297,30 @@ while (sesi) {
             System.out.println("================= Detail Pemesanan ================");
             System.out.println("|Nama              : "+namaTamu+"                   \t  |");
             System.out.println("|Nomor kamar       : "+inputNomor+"                 \t  |");
-            System.out.println("|Tanggal check-in  : "+inputcheckin+"               \t\t  |");
-            System.out.println("|Tanggal check-out : "+inputcheckout+"              \t\t  |");
+            System.out.println("|Tanggal check-in  : "+tanggal[tgl_checkin]+"     \t\t  |");
+            System.out.println("|Tanggal check-out : "+tanggal[tgl_checkout]+"    \t\t  |");
             System.out.println("|Jumlah bayar      : "+jumlahbayar+"                \t  |");
-            System.out.println("|Tipe Kasur        : "+tipeKasur[index-1]+"                \t  |");
+            System.out.println("|Tipe Kasur        : "+tipeKasur[index-1]+"          \t  |");
             System.out.println("===================================================");
 
             System.out.println("apakah ingin lanjut pembayaran ? : ");
+
+            
             System.out.println("1. ya ");
             System.out.println("2. tidak ");
             System.out.print("input pilihan : ");
             int menu2 = key.nextInt();
-            pembayaran(menu2, jumlahbayar,namaTamu,inputcheckin,inputcheckout,nohp,inputNomor,index);
+            pembayaran(menu2, jumlahbayar,namaTamu,tanggal[tgl_checkin],tanggal[tgl_checkout],nohp,inputNomor,index);
             }
+            }    
+            
             
             }else{
                 System.out.println("maaf kamar sudah penuh");
             }
            
                 break;
-
+            
             case 2 : 
             Tamu();
 
@@ -316,8 +334,11 @@ while (sesi) {
              break; 
             
             case 3:
-           
-            tampilkamar();
+            tampiltanggal();
+            System.out.print("input tanggal yang ingin di cek : ");
+            int input_tgl = key.nextInt();
+            int tgl_cek = input_tgl-1;    
+            tampilkamar(tgl_cek);
 
                 break;
 
